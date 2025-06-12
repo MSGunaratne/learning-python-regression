@@ -64,7 +64,7 @@ if __name__ == "__main__":
 https://learning-python-regression.onrender.com/
 
 ## Screenshot
-
+![Screenshot 2025-06-12 130809](https://github.com/user-attachments/assets/dbf79e1c-9eee-4d23-973b-0c6a2cf6e3f5)
 
 
 ## License
