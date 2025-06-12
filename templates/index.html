@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Boston Housing Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        form {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 10px;
+        }
+        
+        .last-row {
+            grid-column: 1 / span 2;
+            width: 50%;
+            margin: 0 auto;
+        }
+        
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        input[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+            width: 100%;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+        
+        .prediction {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f4f8;
+            border-left: 4px solid #3498db;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Boston Housing Price Prediction</h2>
+    <form action="/predict" method="post">
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="crim">CRIM (Crime Rate):</label>
+                <input type="text" id="crim" name="CRIM" placeholder="e.g., 0.00632">
+            </div>
+            
+            <div class="form-group">
+                <label for="zn">ZN (Residential Land):</label>
+                <input type="text" id="zn" name="ZN" placeholder="e.g., 18">
+            </div>
+            
+            <div class="form-group">
+                <label for="indus">INDUS (Industrial Land):</label>
+                <input type="text" id="indus" name="INDUS" placeholder="e.g., 2.31">
+            </div>
+            
+            <div class="form-group">
+                <label for="chas">CHAS (Charles River):</label>
+                <input type="text" id="chas" name="CHAS" placeholder="0 or 1">
+            </div>
+            
+            <div class="form-group">
+                <label for="nox">NOX (Nitric Oxide):</label>
+                <input type="text" id="nox" name="NOX" placeholder="e.g., 0.538">
+            </div>
+            
+            <div class="form-group">
+                <label for="rm">RM (Avg Rooms):</label>
+                <input type="text" id="rm" name="RM" placeholder="e.g., 6.575">
+            </div>
+            
+            <div class="form-group">
+                <label for="age">AGE (% Pre-1940):</label>
+                <input type="text" id="age" name="AGE" placeholder="e.g., 65.2">
+            </div>
+            
+            <div class="form-group">
+                <label for="dis">DIS (Distances):</label>
+                <input type="text" id="dis" name="DIS" placeholder="e.g., 4.09">
+            </div>
+            
+            <div class="form-group">
+                <label for="rad">RAD (Highway Access):</label>
+                <input type="text" id="rad" name="RAD" placeholder="e.g., 1">
+            </div>
+            
+            <div class="form-group">
+                <label for="tax">TAX (Tax Rate):</label>
+                <input type="text" id="tax" name="TAX" placeholder="e.g., 296">
+            </div>
+            
+            <div class="form-group">
+                <label for="ptratio">PTRATIO (Pupil-Teacher):</label>
+                <input type="text" id="ptratio" name="PTRATIO" placeholder="e.g., 15.3">
+            </div>
+            
+            <div class="form-group">
+                <label for="b">B (Black Population):</label>
+                <input type="text" id="b" name="B" placeholder="e.g., 396.9">
+            </div>
+            
+            <div class="form-group last-row">
+                <label for="lstat">LSTAT (Lower Status %):</label>
+                <input type="text" id="lstat" name="LSTAT" placeholder="e.g., 4.98">
+            </div>
+        </div>
+        
+        <input type="submit" value="Predict Housing Price">
+    </form>
+
+    {% if prediction_text %}
+        <div class="prediction">
+            <h3>{{ prediction_text }}</h3>
+        </div>
+    {% endif %}
+</body>
+</html>
